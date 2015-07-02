@@ -12,20 +12,27 @@
     font-family: "Oswald", serif;
 }
 
+#dashboard {
+  margin-left: 30%;
+}
+
 body{
-    width:1060px;
+    width:1050px;
     margin:50px auto;
-    margin-left: 30%;
+    margin-left: auto;
 }
 path {  stroke: #fff; }
+
+p {
+  margin-left: auto;
+}
 
 
 </style>
 <body>
 <div id='dashboard'>
 </div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<!-- <script scr="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+<script src="lib/d3.v3.min.js"></script>
 <script src="lib/jquery-1.11.1.min.js"></script>
 <script>
 var audio = $("<audio>");
@@ -157,7 +164,7 @@ function dashboard(id, fData){
         var dis = {};
             
         // create description.
-        var description = d3.select(id).append("svg").append("g");
+        var description = d3.select(id).append("svg").style('width', "900").append("g");
 
         description.append("text")
                     .attr("id", "title")
@@ -194,3 +201,5 @@ d3.json("echoNestDictionary.json", function(error, data) {
     dashboard('#dashboard', data);
 });
 </script>
+</body>
+<p>This is a simple visualization on how valence and arousal data in V-A space can relate to human labelled emotion tags. Valence and arousal data are fetched from the Echo Nest api. Click on the spots, 30-sec preview will be played(hosted on Spotify).</p>
